@@ -1,5 +1,6 @@
 import { BrowserRouter, Router } from "react-router-dom";
 import RoutesProvider from "./utils/routes";
+import ItemListComponent from "./components/itemList";
 
 function App() {
   return (
@@ -7,6 +8,7 @@ function App() {
       <BrowserRouter>
         <div>
           <p>IJDWIAJIJ</p>
+          <ItemListComponent></ItemListComponent>
         </div>
 
         <div>
