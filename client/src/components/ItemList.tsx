@@ -7,12 +7,13 @@ import SearchBar from "./searchbar";
 
 function ItemListComponent() {
   //Function for getting list.
-  const [filteredItemList, setFilteredItemList] = useState<string[]>([]); //Replace the string[] later.
-  const [fullItemList, setFullItemList] = useState<string[]>([]); //Replace the string[] later.
+  const [filteredItemList, setFilteredItemList] = useState<string[]>([]);
+  const [fullItemList, setFullItemList] = useState<string[]>([]);
 
+  //Api call.
   useEffect(() => {
     const getItems = async () => {
-      const data: string[] = await fetchAllScripts(); //Replace with a function later.
+      const data: string[] = await fetchAllScripts();
       setFullItemList(data);
       setFilteredItemList(data);
     };
@@ -28,8 +29,6 @@ function ItemListComponent() {
 
     setFilteredItemList(filteredItemList);
   };
-
-  //Add some additional mapping to convert from the json from function.
 
   //Return html.
   return (
