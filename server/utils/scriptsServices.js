@@ -2,13 +2,6 @@ const { google } = require('googleapis');
 const mammoth = require('mammoth');
 
 //Section to create and authorise the app connecting to the google drive.
-const CLIENT_ID = '659829259390-j3vo96da9ij9uiks5kcp76aiuihe7k77.apps.googleusercontent.com';
-const CLIENT_SECRET = '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';
-const REDIRECT_URI = 'https://developers.google.com/oauthplayground';
-
-const REFRESH_TOKEN = '1//04RRgFCJ9ZrfzCgYIARAAGAQSNwF-L9IrBsvnT6iRpZApBAQMKo4z-gHw9NhR85NtkVCA5jINpp9pyc9nz4-64Ga04w1OENSIoPQ';
-
-
 
 async function getAllScripts(){
     const oauth2Client = new google.auth.OAuth2(
