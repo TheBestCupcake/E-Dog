@@ -1,7 +1,15 @@
 const { google } = require('googleapis');
 const mammoth = require('mammoth');
+const {Credentials} = require('./oauthCreds');
 
 //Section to create and authorise the app connecting to the google drive.
+const CLIENT_ID = Credentials.CLIENT_ID;
+const CLIENT_SECRET = Credentials.CLIENT_SECRET;
+const REDIRECT_URI = Credentials.REDIRECT_URI;
+
+const REFRESH_TOKEN = Credentials.REFRESH_TOKEN;
+
+
 
 async function getAllScripts(){
     const oauth2Client = new google.auth.OAuth2(
@@ -82,4 +90,3 @@ async function getScriptByID(id){
         console.error('Error extracting text from .docx file:', error);
     }
 }
-
