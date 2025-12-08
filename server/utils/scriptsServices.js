@@ -1,4 +1,5 @@
 const { google } = require('googleapis');
+const mammoth = require('mammoth');
 
 //Section to create and authorise the app connecting to the google drive.
 const CLIENT_ID = '659829259390-j3vo96da9ij9uiks5kcp76aiuihe7k77.apps.googleusercontent.com';
@@ -26,9 +27,12 @@ async function getAllScripts(){
 
     //Logic.
     const result = await drive.files.list({
+        q: "mimeType='application/vnd.openxmlformats-officedocument.wordprocessingml.document'",
         pageSize: 10,
-        fields: 'nextPageToken, files(id, name)',
+        fields: 'nextPageToken, files(id, name, fileExtension)',
     });
+
+    
 
     const files = result.data.files;
 
@@ -40,8 +44,10 @@ async function getAllScripts(){
     console.log('Files:');
     // Print the name and ID of each file.
     files.forEach((file) => {
-        console.log(`${file.name} (${file.id})`);
+        console.log(`${file.name} (${file.id}) and ${file.webViewLink} and content type ${file.fileExtension} and`);
     });
+
+    return files;
 }
 
 
@@ -60,11 +66,27 @@ async function getScriptByID(id){
         auth: oauth2Client
     });
 
+    //Logic
+    const response = await drive.files.get({
+            fileId: id,
+            alt: 'media',  // this tells the API to return the raw file content
+        },
+        {
+            responseType: 'arraybuffer'
+        }
+    );
+
+
+    try {
+        const fileBuffer = response.data;
+
+        // Use the 'mammoth' library to extract text.
+        const result = await mammoth.convertToHtml({buffer: fileBuffer});
+
+        console.log("Extracted Text Successfully" + result.value);
+        return result.value;  // The text content of the document in html format.
+    } catch (error) {
+        console.error('Error extracting text from .docx file:', error);
+    }
 }
-
-
-
-(async () => {
-    await getAllScripts();
-})();
 

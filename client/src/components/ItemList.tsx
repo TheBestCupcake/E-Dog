@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { fetchAllScripts } from "../utils/scriptsServices";
-import SearchBar from "./searchbar";
+import SearchBar from "./searchBar";
 
 //Put a function to fetch urls here.
 
