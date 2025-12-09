@@ -11,7 +11,7 @@ const REFRESH_TOKEN = Credentials.REFRESH_TOKEN;
 
 
 
-async function getAllScripts(){
+async function dbGetAllScripts(){
     const oauth2Client = new google.auth.OAuth2(
         CLIENT_ID,
         CLIENT_SECRET,
@@ -45,14 +45,14 @@ async function getAllScripts(){
     console.log('Files:');
     // Print the name and ID of each file.
     files.forEach((file) => {
-        console.log(`${file.name} (${file.id}) and ${file.webViewLink} and content type ${file.fileExtension} and`);
+        console.log(`${file.name} (${file.id}). Content type: ${file.fileExtension}.`);
     });
 
     return files;
 }
 
 
-async function getScriptByID(id){
+async function dbGetScriptByID(id){
     const oauth2Client = new google.auth.OAuth2(
         CLIENT_ID,
         CLIENT_SECRET,
@@ -90,3 +90,8 @@ async function getScriptByID(id){
         console.error('Error extracting text from .docx file:', error);
     }
 }
+
+
+
+//Exports.
+module.exports = {dbGetAllScripts, dbGetScriptByID}

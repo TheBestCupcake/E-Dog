@@ -1,19 +1,23 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 import { fetchAllScripts } from "../utils/scriptsServices";
 import SearchBar from "./searchBar";
 
-//Put a function to fetch urls here.
+interface itemProps {
+  id: string;
+  name: string;
+}
 
 function ItemListComponent() {
   //Function for getting list.
-  const [filteredItemList, setFilteredItemList] = useState<string[]>([]);
-  const [fullItemList, setFullItemList] = useState<string[]>([]);
+  const [filteredItemList, setFilteredItemList] = useState([]);
+  const [fullItemList, setFullItemList] = useState([]);
 
   //Api call.
   useEffect(() => {
     const getItems = async () => {
-      const data: string[] = await fetchAllScripts();
+      const data = await fetchAllScripts();
       setFullItemList(data);
       setFilteredItemList(data);
     };
@@ -23,19 +27,25 @@ function ItemListComponent() {
 
   //Function for filtering list.
   const filterItems = (searchValue: string) => {
-    const filteredItemList = fullItemList.filter((item) =>
-      item.toLowerCase().includes(searchValue.toLowerCase())
+    const filteredItemList = fullItemList.filter((item: itemProps) =>
+      item.name.toLowerCase().includes(searchValue.toLowerCase())
     );
 
     setFilteredItemList(filteredItemList);
   };
+
+  const filterItemNames = filteredItemList.map((item: itemProps) => (
+    <Link key={`${item.name}`} to={`/${item.name}`}>
+      {item.name}
+    </Link>
+  ));
 
   //Return html.
   return (
     <>
       <SearchBar onChangeCallback={filterItems} />
 
-      <ul>{filteredItemList}</ul>
+      <ul>{filterItemNames}</ul>
     </>
   );
 }
