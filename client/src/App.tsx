@@ -10,10 +10,6 @@ function App() {
         <div>
           <p>IJDWIAJIJ</p>
           <ItemListComponent></ItemListComponent>
-
-          <div>
-            <FileDisplay></FileDisplay>
-          </div>
         </div>
 
         <div>

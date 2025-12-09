@@ -8,6 +8,7 @@ exports.getAllScripts = async (req, res) => {
 }
 
 exports.getScriptById = async (req, res) => {
-
-    return res.status(200).json("Hi");
+    const id = req.params.id;
+    script = await dbGetScriptById(id);
+    return res.status(200).json(script);
 }

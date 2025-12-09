@@ -35,7 +35,7 @@ function ItemListComponent() {
   };
 
   const filterItemNames = filteredItemList.map((item: itemProps) => (
-    <Link key={`${item.name}`} to={`/${item.name}`}>
+    <Link key={`${item.name}`} to={`/${item.name}`} state={item}>
       {item.name}
     </Link>
   ));

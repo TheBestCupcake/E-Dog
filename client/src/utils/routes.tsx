@@ -1,7 +1,10 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import FileDisplay from "../components/fileDisplay";
 //Component imports.
 
-let routeVariables: any[] = [];
+let routeVariables: any[] = [
+  { path: "/:name", name: ":name", component: <FileDisplay /> },
+];
 
 function RoutesProvider() {
   const routesObjects = routeVariables.map((variable) => (

@@ -6,3 +6,10 @@ export const fetchAllScripts = async () => {
   const data = await response.json();
   return data;
 };
+
+export const fetchScriptById = async (id: string) => {
+  const response = await fetch(`${apiURL}/Scripts/${id}`);
+
+  const data = await response.json();
+  return data;
+};

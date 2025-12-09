@@ -1,13 +1,25 @@
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import { fetchScriptById } from "../utils/scriptsServices";
+import ReactHtmlParser from "html-react-parser";
+
 function FileDisplay() {
-  return (
-    <iframe
-      src="https://docs.google.com/document/d/1otqyzm_31yGktRy3FAEPIsExZ8Za8ZOi/edit?usp=drivesdk&ouid=113296325335584540688&rtpof=true&sd=true"
-      width="640"
-      height="718"
-    >
-      Loading…
-    </iframe>
-  );
+  const location = useLocation();
+  const script = location.state;
+  const id = script.id;
+
+  const [scriptHtml, setScriptHtml] = useState("");
+
+  useEffect(() => {
+    const loadScript = async () => {
+      const data = await fetchScriptById(id);
+      setScriptHtml(data.html);
+    };
+
+    loadScript();
+  });
+
+  return <div>{ReactHtmlParser(scriptHtml)}</div>;
 }
 
 export default FileDisplay;

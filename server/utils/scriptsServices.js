@@ -52,7 +52,7 @@ async function dbGetAllScripts(){
 }
 
 
-async function dbGetScriptByID(id){
+async function dbGetScriptById(id){
     const oauth2Client = new google.auth.OAuth2(
         CLIENT_ID,
         CLIENT_SECRET,
@@ -85,7 +85,7 @@ async function dbGetScriptByID(id){
         const result = await mammoth.convertToHtml({buffer: fileBuffer});
 
         console.log("Extracted Text Successfully" + result.value);
-        return result.value;  // The text content of the document in html format.
+        return {html: result.value};  // The text content of the document in html format.
     } catch (error) {
         console.error('Error extracting text from .docx file:', error);
     }
@@ -94,4 +94,4 @@ async function dbGetScriptByID(id){
 
 
 //Exports.
-module.exports = {dbGetAllScripts, dbGetScriptByID}
+module.exports = {dbGetAllScripts, dbGetScriptById}
