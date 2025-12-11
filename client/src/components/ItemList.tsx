@@ -35,18 +35,23 @@ function ItemListComponent() {
   };
 
   const filterItemNames = filteredItemList.map((item: itemProps) => (
-    <Link key={`${item.name}`} to={`/${item.name}`} state={item}>
+    <Link
+      className="link-item"
+      key={`${item.name}`}
+      to={`/${item.name}`}
+      state={item}
+    >
       {item.name}
     </Link>
   ));
 
   //Return html.
   return (
-    <>
+    <div className="container">
       <SearchBar onChangeCallback={filterItems} />
 
-      <ul>{filterItemNames}</ul>
-    </>
+      <ol className="link-list">{filterItemNames}</ol>
+    </div>
   );
 }
 

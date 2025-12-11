@@ -12,6 +12,7 @@ function SearchBar({ onChangeCallback }: { onChangeCallback: any }) {
 
   return (
     <input
+      className="search-bar"
       type="text"
       value={searchValue}
       onChange={handleSearch}

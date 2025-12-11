@@ -18,7 +18,7 @@ function FileDisplay({ id }: scriptProps) {
     loadScript();
   });
 
-  return <div>{ReactHtmlParser(scriptHtml)}</div>;
+  return <div className="page-content">{ReactHtmlParser(scriptHtml)}</div>;
 }
 
 export default FileDisplay;
