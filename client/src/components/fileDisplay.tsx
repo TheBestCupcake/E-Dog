@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
 import { fetchScriptById } from "../utils/scriptsServices";
 import ReactHtmlParser from "html-react-parser";
 
-function FileDisplay() {
-  const location = useLocation();
-  const script = location.state;
-  const id = script.id;
+interface scriptProps {
+  id: string;
+}
 
+function FileDisplay({ id }: scriptProps) {
   const [scriptHtml, setScriptHtml] = useState("");
 
   useEffect(() => {

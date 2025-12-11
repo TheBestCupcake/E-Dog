@@ -1,9 +1,11 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import FileDisplay from "../components/fileDisplay";
+import { Route, Routes } from "react-router-dom";
+import ScriptsListPage from "../pages/scriptsListPage";
+import ScriptsDisplayPage from "../pages/scriptsDisplayPage";
 //Component imports.
 
 let routeVariables: any[] = [
-  { path: "/:name", name: ":name", component: <FileDisplay /> },
+  { path: "/", name: "Home", component: <ScriptsListPage /> },
+  { path: "/:name", name: ":name", component: <ScriptsDisplayPage /> },
 ];
 
 function RoutesProvider() {

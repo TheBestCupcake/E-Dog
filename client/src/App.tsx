@@ -1,17 +1,10 @@
-import { BrowserRouter, Router } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import RoutesProvider from "./utils/routes";
-import ItemListComponent from "./components/itemList";
-import FileDisplay from "./components/fileDisplay";
 
 function App() {
   return (
     <>
       <BrowserRouter>
-        <div>
-          <p>IJDWIAJIJ</p>
-          <ItemListComponent></ItemListComponent>
-        </div>
-
         <div>
           <RoutesProvider />
         </div>
