@@ -93,3 +93,7 @@ body {
 .page-content p {
     margin-bottom: 20px;
 }
+
+.top-link{
+    display:inline-block;
+}
