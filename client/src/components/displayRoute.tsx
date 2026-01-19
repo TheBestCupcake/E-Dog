@@ -6,6 +6,7 @@ function DisplayRoute({ name }: { name: string }) {
       <Link className="top-link" key={`Home`} to={`/`}>
         Home
       </Link>
+      &nbsp; &gt; &nbsp;
       <p className="top-link">{name}</p>
     </div>
   );
