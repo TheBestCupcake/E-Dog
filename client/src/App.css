@@ -17,17 +17,17 @@ body {
     width: 100%;
     padding: 20px;
     box-sizing: border-box;
+    
+    display: flex;
+    flex-direction: column;
 }
 
 /* Search Bar Styling */
 .search-bar {
-    width: 100%;
-    max-width: 400px;
     padding: 10px 15px;
     font-size: 16px;
     border-radius: 5px;
     border: 1px solid #ccc;
-    margin: 20px auto;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
@@ -94,6 +94,9 @@ body {
     margin-bottom: 20px;
 }
 
+
+/*Top link in the display page.*/
+
 .top-link{
     display:inline-block;
     color:black;
@@ -102,4 +105,10 @@ body {
 
 .top-link:hover{
     color: grey;
+}
+
+
+/*Title of the main page.*/
+.title-page{
+    text-align: center;
 }
