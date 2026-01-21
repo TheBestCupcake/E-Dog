@@ -28,7 +28,7 @@ function ItemListComponent() {
   //Function for filtering list.
   const filterItems = (searchValue: string) => {
     const filteredItemList = fullItemList.filter((item: itemProps) =>
-      item.name.toLowerCase().includes(searchValue.toLowerCase())
+      item.name.toLowerCase().includes(searchValue.toLowerCase()),
     );
 
     setFilteredItemList(filteredItemList);
@@ -49,6 +49,8 @@ function ItemListComponent() {
   return (
     <div className="container">
       <SearchBar onChangeCallback={filterItems} />
+
+      <h2>Scripts</h2>
 
       <ol className="link-list">{filterItemNames}</ol>
     </div>
